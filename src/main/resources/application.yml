@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    name: hdas  #数据库名
+    url: jdbc:mariadb://192.168.3.119:3306 #url
+    username: root  #用户名
+    password: 632238  #密码
+#    driver-class-name: org.mariadb.jdbc.Driver  #数据库链接驱动
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #配置映射文件
+  type-aliases-package: com..parent.hdas.bean #配置实体类
