@@ -29,7 +29,7 @@ public class MyLed3 {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
-        int x = 100;
+        int x = 10;
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
         // provision gpio pin #01 as an output pin and turn on
@@ -47,12 +47,41 @@ public class MyLed3 {
         pin2.setShutdownOptions(true, PinState.LOW);
 
         while (x-- > 0){
-            pin0.toggle();
-            Thread.sleep(1000);
-            pin1.toggle();
-            Thread.sleep(1000);
-            pin2.toggle();
-            Thread.sleep(1000);
+            pin0.low();
+            pin1.low();
+            pin2.low();
+            System.out.println("pin012: 000---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
+            pin0.low();
+            pin1.low();
+            pin2.high();
+            System.out.println("pin012: 001---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
+            pin0.low();
+            pin1.high();
+            pin2.low();
+            System.out.println("pin012: 010---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
+            pin0.high();
+            pin1.low();
+            pin2.low();
+            System.out.println("pin012: 100---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
+            pin0.high();
+            pin1.low();
+            pin2.high();
+            System.out.println("pin012: 101---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
+            pin0.high();
+            pin1.high();
+            pin2.low();
+            System.out.println("pin012: 110---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
+            pin0.high();
+            pin1.high();
+            pin2.high();
+            System.out.println("pin012: 111---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            Thread.sleep(10000);
         }
         gpio.shutdown();
         System.out.println("Exiting ControlGpioExample");
