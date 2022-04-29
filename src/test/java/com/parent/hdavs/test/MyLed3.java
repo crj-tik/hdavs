@@ -1,14 +1,5 @@
 package com.parent.hdavs.test;
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPin;
-import com.pi4j.io.gpio.GpioPinDigitalInput;
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinDirection;
-import com.pi4j.io.gpio.PinMode;
-import com.pi4j.io.gpio.PinPullResistance;
-import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.trigger.GpioCallbackTrigger;
 import com.pi4j.io.gpio.trigger.GpioPulseStateTrigger;
 import com.pi4j.io.gpio.trigger.GpioSetStateTrigger;
@@ -38,7 +29,7 @@ public class MyLed3 {
         final GpioPinDigitalOutput pin1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED1", PinState.HIGH);
         // provision gpio pin #01 as an output pin and turn on
         final GpioPinDigitalOutput pin2 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED2", PinState.HIGH);
-
+        final GpioPinDigitalInput pin3 = gpio.provisionDigitalInputPin(RaspiPin.GPIO_03,"MyIn");
         // set shutdown state for this pin
         pin0.setShutdownOptions(true, PinState.LOW);
         // set shutdown state for this pin
@@ -46,11 +37,17 @@ public class MyLed3 {
         // set shutdown state for this pin
         pin2.setShutdownOptions(true, PinState.LOW);
 
+
+        final GpioPinPwmOutput pin4 = gpio.provisionPwmOutputPin(RaspiPin.GPIO_04);
+        pin4.getPwm();
+
+
+
         while (x-- > 0){
             pin0.low();
             pin1.low();
             pin2.low();
-            System.out.println("pin012: 000---"+pin0.toString()+"-"+pin0.toString()+"-"+pin0.toString());
+            System.out.println("pin012: 000---"+pin0.toString()+"-"+pin0+"-"+pin0.toString());
             Thread.sleep(10000);
             pin0.low();
             pin1.low();

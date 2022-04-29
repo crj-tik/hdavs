@@ -6,5 +6,5 @@ package com.parent.hdavs.service;
  **/
 
 
-public interface service {
+public interface Service {
 }

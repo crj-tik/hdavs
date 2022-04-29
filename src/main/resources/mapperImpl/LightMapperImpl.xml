@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.parent.hdavs.mapper.LightMapper">
+
+    <select id="queryId" parameterType="java.lang.Integer" resultType="com.parent.hdavs.bean.Light">
+        select * from light where id = #{id}
+    </select>
+
+    <select id="queryList" parameterType="java.lang.Integer" resultType="com.parent.hdavs.bean.Light">
+        select * from light limit #{count};
+    </select>
+
+    <select id="queryResult" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select light from light limit #{count};
+    </select>
+
+</mapper>
